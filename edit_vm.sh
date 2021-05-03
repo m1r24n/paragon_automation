@@ -5,7 +5,7 @@ BASE=109
 GW=10.1.100.1
 NTP=10.1.100.1
 DNS=10.1.100.1
-for i in control node0 node1 node2 node3
+for i in control node{0..3}
 do
     echo "changing configuration for disk image ${i}"
     IP="10.1.100.${BASE}/24"

@@ -142,7 +142,7 @@ there are four VM, control host (1x), node0 as master (1x), and worker nodes (no
 2. Copy file **ubuntu.img** (from the previous step ), into this directory
 3. copy file **ubuntu.img** into file **control.img**, **node0.img**, **node1.img**, **node2.img**, and **node3.img**
 
-        for i in control node0 node1 node2 node3
+        for i in control node{0..3}
         do
             cp ubuntu.qcow2 ${i}.img
         done
@@ -156,7 +156,7 @@ there are four VM, control host (1x), node0 as master (1x), and worker nodes (no
         GW=10.1.100.1
         NTP=10.1.100.1
         DNS=10.1.100.1
-        for i in control node0 node1 node2 node3
+        for i in control node{0..3}
         do
             echo "changing configuration for disk image ${i}"
             IP="10.1.100.${BASE}/24"
