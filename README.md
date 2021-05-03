@@ -147,7 +147,7 @@ there are four VM, control host (1x), node0 as master (1x), and worker nodes (no
             cp ubuntu.qcow2 ${i}.img
         done
 
-4. Run the following script on the hypervisor to set hostname, ip address and change the DNS/NTP information on the VMs [**edit_vm.sh**](edit_vm.sh). Change the ip address to match your network configuration
+4. Run the following script on the hypervisor to set hostname, ip address and change the DNS/NTP information on the VMs [**edit_vm.sh**](edit_vm.sh), by editing the disk image before the VMs are started. Change the ip address to match your network configuration
 
         #!/bin/bash
         sudo mkdir /media/nbd
@@ -231,7 +231,7 @@ there are four VM, control host (1x), node0 as master (1x), and worker nodes (no
 
         ssh ubuntu@10.1.100.109
         ssh-keygen -t rsa
-        for i in node0 node1 node2 node3
+        for i in node{0..3}
         do
             ssh-copy-id ${i}
         done
@@ -241,7 +241,7 @@ there are four VM, control host (1x), node0 as master (1x), and worker nodes (no
 
 8. On VM **control**, run the following script to verify that the system UUID of VM master, node1, node2 and node3 are unique. If they are not unique, then kubernetes installation may fail.
 
-        for i in node0 node1 node2 node3
+        for i in node{0..3}
         do
             echo VM $i :  `ssh ${i} "sudo cat /sys/class/dmi/id/product_uuid"`
         done
