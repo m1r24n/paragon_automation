@@ -58,15 +58,15 @@ node3 | 10.1.100.113/24 | k8s worker node
 
        or you can use the following script to create the files
 
-            cat > meta-data << EOF
-            instance-id: local-001
-            EOF
-            cat > user-data << EOF
-            #cloud-config
-            password: pass01
-            chpasswd: { expire: False }
-            ssh_pwauth: True
-            EOF
+        cat > meta-data << EOF
+        instance-id: local-001
+        EOF
+        cat > user-data << EOF
+        #cloud-config
+        password: pass01
+        chpasswd: { expire: False }
+        ssh_pwauth: True
+        EOF
 
     c. create the the cdrom iso file using the following command 
 
